@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: guestbook-ui-rollout-canary
+spec:
+  replicas: 3
+  minReadySeconds: 30
+  strategy:
+    canary:
+      steps:
+        - setWeight: 10
+        - pause:
+            duration: 10
+        - setWeight: 50
+        - pause: {}
+        - setWeight: 100
+  selector:
+    matchLabels:
+      app: guestbook-ui
+  template:
+    metadata:
+      labels:
+        app: guestbook-ui
+    spec:
+      containers:
+        - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+          name: guestbook-ui
+          ports:
+            - containerPort: 80
