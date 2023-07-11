@@ -5,6 +5,7 @@ metadata:
 spec:
   replicas: 2
   minReadySeconds: 30
+  revisionHistoryLimit: 1
   strategy:
     canary:
       steps:
