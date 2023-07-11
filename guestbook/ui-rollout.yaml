@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: guestbook-ui-rollout-canary
 spec:
-  replicas: 3
+  replicas: 2
   minReadySeconds: 30
   strategy:
     canary:
