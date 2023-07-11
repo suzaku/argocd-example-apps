@@ -22,7 +22,6 @@ spec:
     metadata:
       labels:
         app: guestbook-ui
-        test: canary
     spec:
       containers:
         - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
